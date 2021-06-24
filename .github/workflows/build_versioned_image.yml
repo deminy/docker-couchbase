@@ -37,7 +37,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: Dockerfile
+          file: dockerfiles/${GITHUB_REF##*/}/Dockerfile
           platforms: linux/amd64
           push: true
           tags: deminy/couchbase:${GITHUB_REF##*/}

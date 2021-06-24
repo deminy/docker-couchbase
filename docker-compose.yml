@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  couchbase:
+    image: deminy/couchbase
+    environment:
+      CB_ADMIN: username
+      CB_ADMIN_PASSWORD: password
+      CB_BUCKET: test
+      CB_BUCKET_RAM_SIZE: 256
+      CB_SERVICES: data,index,query,fts
+    ports:
+      - 8091-8093:8091-8093
+      - 11209-11211:11209-11211
+    volumes:
+      - couchbase:/opt/couchbase/var/lib/couchbase/data
+
+volumes:
+  couchbase:
