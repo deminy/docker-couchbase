@@ -4,7 +4,7 @@ Customized Couchbase image for local development. You can get the image from [he
 
 ```bash
 # To build the Docker image.
-docker build -t deminy/couchbase .
+docker build -t deminy/couchbase -f ./dockerfiles/latest/Dockerfile .
 
 # To start a Couchbase container.
 docker-compose up -d --force-recreate
