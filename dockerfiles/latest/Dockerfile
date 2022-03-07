@@ -8,4 +8,4 @@ ENV CB_SERVICES "data,index,query,fts"
 
 COPY ./rootfilesystem /
 
-CMD ["/entrypoint.sh"]
+CMD ["/entrypoint2.sh"]

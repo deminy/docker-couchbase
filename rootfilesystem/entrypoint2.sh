@@ -16,10 +16,10 @@ if [[ -z $CB_ADMIN ]] || [[ -z $CB_ADMIN_PASSWORD ]] || [[ -z $CB_BUCKET ]] || [
     exit 1
 fi
 
-runsvdir-start &
+/entrypoint.sh couchbase-server &
 
 while ! curl -sf --output /dev/null $CB_CLUSTER ; do
-    sleep 1
+    sleep 2
 done
 
 set -x
