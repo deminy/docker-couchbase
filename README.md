@@ -1,5 +1,10 @@
 Customized Couchbase image for local development. You can get the image from [here](https://hub.docker.com/r/deminy/couchbase).
 
+# How To Use It
+
+Check file [docker-compose.yml](https://github.com/deminy/docker-couchbase/blob/master/docker-compose.yml) to see how to
+use environment variables to initialize username, password, services, and other configuration options.
+
 # Docker Commands
 
 ```bash
