@@ -20,4 +20,6 @@ docker compose exec -ti couchbase bash
 
 # References
 
-* The image is built based on [the official Couchbase image](https://hub.docker.com/_/couchbase).
+* The images are built based on
+  * [the official Couchbase image](https://hub.docker.com/_/couchbase).
+  * [couchbase/server](https://hub.docker.com/r/couchbase/server): to build the Couchbase 7.0.4 image only.

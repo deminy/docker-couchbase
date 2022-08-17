@@ -1,4 +1,4 @@
-FROM couchbase/server:enterprise-7.1.1
+FROM couchbase:enterprise-7.1.1
 
 ENV CB_ADMIN username
 ENV CB_ADMIN_PASSWORD password
