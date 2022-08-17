@@ -14,8 +14,8 @@ docker build -t deminy/couchbase -f ./dockerfiles/latest/Dockerfile .
 # To start a Couchbase container.
 docker-compose up -d --force-recreate
 
-docker exec -t  $(docker ps -qf "name=couchbase") bash -c "curl -i http://127.0.0.1:8091"
-docker exec -ti $(docker ps -qf "name=couchbase") bash
+docker compose exec -t  couchbase bash -c "curl -i http://127.0.0.1:8091"
+docker compose exec -ti couchbase bash
 ```
 
 # References
