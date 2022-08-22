@@ -37,7 +37,7 @@ jobs:
         with:
           context: .
           file: dockerfiles/latest/Dockerfile
-          platforms: linux/amd64
+          platforms: linux/amd64,linux/arm64/v8
           push: true
           tags: deminy/couchbase:latest
 
