@@ -35,10 +35,14 @@ jobs:
         name: Set output parameters
         id: params
         run: |
-          echo ::set-output name=docker_tag::${GITHUB_REF##*/}
+          set -ex
+
           branch_name=${GITHUB_REF##*/}
           major_version=${branch_name%.*}
-          if [[ ${major_version} =~ ^7\.[12] ]] ; then
+
+          echo "::set-output name=branch_name::${branch_name}"
+          echo "::set-output name=docker_file::dockerfiles/${major_version}/Dockerfile"
+          if [[ ${major_version} =~ ^7\.[1-9] ]] ; then
             echo "::set-output name=platforms::linux/amd64,linux/arm64/v8"
           else
             echo "::set-output name=platforms::linux/amd64"
@@ -50,11 +54,13 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: dockerfiles/${{ steps.params.outputs.docker_tag }}/Dockerfile
+          file: ${{ steps.params.outputs.docker_file }}
+          build-args: |
+            COUCHBASE_VERSION=${{ steps.params.outputs.branch_name }}
           platforms: ${{ steps.params.outputs.platforms }}
           push: true
-          tags: deminy/couchbase:${{ steps.params.outputs.docker_tag }}
+          tags: deminy/couchbase:${{ steps.params.outputs.branch_name }}
 
       -
-        name: Image Digest of deminy/couchbase:${{ steps.params.outputs.docker_tag }}
+        name: Image Digest of deminy/couchbase:${{ steps.params.outputs.branch_name }}
         run: echo ${{ steps.docker_build.outputs.digest }}
