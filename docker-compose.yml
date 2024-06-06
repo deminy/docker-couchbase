@@ -1,19 +1,11 @@
-version: '3'
-
 services:
   couchbase:
     image: deminy/couchbase
     environment:
       CB_ADMIN: username
       CB_ADMIN_PASSWORD: password
-      CB_BUCKET: test
-      CB_BUCKET_RAM_SIZE: 256
+      CB_CLUSTER_RAM_SIZE: 300 # Note that RAM quota for each bucket in Couchbase cannot be less than 100 MiB.
+      CB_BUCKETS: test1,test2,test3
       CB_SERVICES: data,index,query,fts
     ports:
-      - 8091-8093:8091-8093
-      - 11209-11211:11209-11211
-    volumes:
-      - couchbase:/opt/couchbase/var/lib/couchbase/data
-
-volumes:
-  couchbase:
+      - 8091
