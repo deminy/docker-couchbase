@@ -2,9 +2,9 @@ FROM couchbase:enterprise
 
 ENV CB_ADMIN username
 ENV CB_ADMIN_PASSWORD password
-ENV CB_BUCKET test
-ENV CB_BUCKET_RAM_SIZE 256
-ENV CB_SERVICES "data,index,query,fts"
+ENV CB_CLUSTER_RAM_SIZE 256
+ENV CB_BUCKETS test
+ENV CB_SERVICES "data,index,query"
 
 COPY ./rootfilesystem /
 
