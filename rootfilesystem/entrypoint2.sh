@@ -7,8 +7,7 @@ CB_CLUSTER="127.0.0.1:8091"
 CB_CLI="/opt/couchbase/bin/couchbase-cli"
 
 if [[ -z "$CB_BUCKETS" ]] && [[ -z "$CB_BUCKET" ]] ; then
-    echo "ERROR: Environment variable CB_BUCKETS or CB_BUCKET must be defined before running this container."
-    exit 1
+    CB_BUCKETS=test
 fi
 if [[ -z "$CB_BUCKETS" ]] && [[ ! -z "$CB_BUCKET" ]] ; then
     # Environment variable CB_BUCKET was used when the image supports only one bucket, as in Couchbase image 7.2.1 and
@@ -36,8 +35,7 @@ if [[ ${#CB_BUCKET_NAMES[@]} -eq 0 ]] ; then
 fi
 
 if [[ -z "$CB_CLUSTER_RAM_SIZE" ]] && [[ -z "$CB_BUCKET_RAM_SIZE" ]] ; then
-    echo "ERROR: Environment variable CB_CLUSTER_RAM_SIZE or CB_BUCKET_RAM_SIZE must be defined before running this container."
-    exit 1
+    CB_CLUSTER_RAM_SIZE=256
 fi
 if [[ -z $CB_CLUSTER_RAM_SIZE ]] && [[ ! -z $CB_BUCKET_RAM_SIZE ]] ; then
     # Environment variable CB_BUCKET_RAM_SIZE was used when the image supports only one bucket, as in Couchbase image
