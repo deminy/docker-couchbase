@@ -4,8 +4,27 @@ services:
     environment:
       CB_ADMIN: username
       CB_ADMIN_PASSWORD: password
-      CB_CLUSTER_RAM_SIZE: 300 # Note that RAM quota for each bucket in Couchbase cannot be less than 100 MiB.
+      # CB_CLUSTER_RAM_SIZE:
+      #   The data services memory quota (in MiB). If multiple buckets are specified, each bucket will be allocated an
+      #   equal share of the total memory quota of the data service.
+      #
+      #   Alternatively, you can specify environment variable CB_BUCKET_RAM_SIZE instead to set the RAM quota for each
+      #   bucket. In this case, the total RAM quota for the data service will be the sum of the RAM quota for all
+      #   buckets.
+      #
+      #   When both CB_CLUSTER_RAM_SIZE and CB_BUCKET_RAM_SIZE are specified, CB_BUCKET_RAM_SIZE will be ignored.
+      #
+      #   Please note that:
+      #     1. The sum of RAM quota for all buckets cannot exceed the RAM quota for the data service.
+      #     2. RAM quota for each bucket in Couchbase cannot be less than 100 MiB.
+      CB_CLUSTER_RAM_SIZE: 300
+      # CB_BUCKETS:
+      #   A comma-separated list of buckets to create.
+      #   For backward-compatibility, environment variable CB_BUCKETS has an alias CB_BUCKET.
       CB_BUCKETS: test1,test2,test3
+      # CB_SERVICES:
+      #   A comma-separated list of services to enable for the cluster. The following services are available: data,
+      #   index, query, fts, eventing, analytics and backup.
       CB_SERVICES: data,index,query,fts
     ports:
       - 8091
