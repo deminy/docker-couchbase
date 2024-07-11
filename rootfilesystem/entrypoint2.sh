@@ -62,7 +62,7 @@ fi
 
 /entrypoint.sh couchbase-server &
 
-while ! curl -sf --output /dev/null $CB_CLUSTER ; do
+while ! curl -sf --output /dev/null http://$CB_CLUSTER ; do
     sleep 2
 done
 
