@@ -30,6 +30,6 @@ services:
       # CB_SERVICES:
       #   A comma-separated list of services to enable for the cluster. Default is "data,index,query".
       #   The following services are available: data, index, query, fts, eventing, analytics and backup.
-      CB_SERVICES: data,index,query
+      CB_SERVICES: data,index,query,eventing,analytics,backup
     ports:
       - 8091
