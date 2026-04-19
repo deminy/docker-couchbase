@@ -41,7 +41,9 @@ jobs:
           major_version=${branch_name%.*}
 
           echo "::set-output name=branch_name::${branch_name}"
-          if [[ ${major_version} =~ ^7\.[1-9] ]] ; then
+          major=${major_version%%.*}
+          minor=${major_version#*.}
+          if (( major > 7 || (major == 7 && minor > 0) )) ; then
             echo "::set-output name=docker_file::dockerfiles/${major_version}.x/Dockerfile"
             echo "::set-output name=platforms::linux/amd64,linux/arm64/v8"
           else
